@@ -3,7 +3,7 @@ from util import get_db_cursor
 
 from PIL import Image, ImageDraw
 from cStringIO import StringIO
-from pygrunn import app
+from app import app
 
 OPACITY = int(0.4 * 256)
 COLORS = {'ZAND': (0xff, 0xff, 0xC7),

@@ -1,7 +1,6 @@
 from flask import Response
 from util import get_db_cursor
-
-from pygrunn import app
+from app import app
 
 @app.route('/geojson/<bbox>')
 def geojson(bbox):

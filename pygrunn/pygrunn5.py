@@ -1,6 +1,6 @@
-from pygrunn import app
+from app import app
 from pygrunn3 import get_image
-from mercator import GlobalMercator
+from pygrunn.mercator import GlobalMercator
 
 @app.route('/tile/<int:z>/<int:x>/<int:y>.png')
 def tile(z, x, y):

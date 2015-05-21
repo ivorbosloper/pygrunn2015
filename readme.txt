@@ -6,4 +6,4 @@
 
 # Run program
 
-python pygrunn.py
+python app.py
