@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+
+{% block drawcode %}
+<script>
+    var colorMap = {'ZAND': '#FFFFC7', 'KLEI': '#87B680', 'VEEN': '#FAD680', 'XXX': '#85624C'};
+    function drawGeoJsonLayer() {
+        var layer = L.geoJson(null, {
+            style: function(feature) {
+                return {'color': colorMap[feature.geometry.properties.soil]};
+            },
+            onEachFeature: function(feature, layer) {
+                layer.bindPopup(feature.properties.soil);
+            }
+        }).addTo(map);
+
+        function refreshData() {
+            $.ajax({
+                url: "/geojson/" + map.getBounds().toBBoxString(),
+                datatype: 'json',
+                success: function (data) {
+                    layer.clearLayers().addData(data);
+                }
+            });
+        }
+        refreshData();
+        map.on('moveend', refreshData);
+    }
+    $(document).ready(function() {drawMap(); drawGeoJsonLayer();});
+</script>
+{% endblock drawcode %}
