@@ -1,0 +1,10 @@
+{% extends "index.html" %}
+
+{% block drawcode %}
+<script>
+    $(document).ready(function() {
+        drawMap();
+        L.tileLayer('/tile/{z}/{x}/{y}.png', {tms:true}).addTo(map);
+    });
+</script>
+{% endblock drawcode %}

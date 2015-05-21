@@ -16,6 +16,7 @@ def index_nr(page):
 
 from pygrunn2 import *
 from pygrunn3 import *
+from pygrunn5 import *
 
 if __name__ == '__main__':
     app.run(debug=True)
