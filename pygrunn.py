@@ -15,6 +15,7 @@ def index_nr(page):
     return render_template('index%d.html' % page)
 
 from pygrunn2 import *
+from pygrunn3 import *
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,0 +1,18 @@
+{% extends "index.html" %}
+
+{% block drawcode %}
+<script>
+    function drawImgLayer() {
+        var image;
+        function refreshData() {
+            var size = map.getSize(), bounds = map.getBounds();
+            if (image) map.removeLayer(image);
+            image = L.imageOverlay("/image_overlay/" + bounds.toBBoxString()
+                                    + "/" + size.x + "/" + size.y, bounds).addTo(map);
+        }
+        refreshData();
+        map.on('moveend', refreshData);
+    }
+    $(document).ready(function() {drawMap(); drawImgLayer();});
+</script>
+{% endblock drawcode %}
