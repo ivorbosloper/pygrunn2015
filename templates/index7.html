@@ -1,0 +1,18 @@
+{% extends "index.html" %}
+
+{% block drawcode %}
+<script>
+    $(document).ready(function() {
+        drawMap();
+        function lat_lng(x, y) {
+            var point = L.point(x,y),
+                point_p = L.Projection.SphericalMercator.unproject(point.divideBy(6378137));
+            return point_p;
+        }
+
+        var bounds = L.latLngBounds(lat_lng(741336.511, 7021994.839),
+                                    lat_lng(749860.582, 7032589.399));
+        L.imageOverlay("/raster/png", bounds).addTo(map);
+    });
+</script>
+{% endblock drawcode %}
